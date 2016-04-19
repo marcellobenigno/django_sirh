@@ -1,7 +1,11 @@
 dj-database-url==0.4.1
 dj-static==0.0.6
 Django==1.9.5
+django-activeurl==0.1.9
+django-appconf==1.0.2
+django-classy-tags==0.7.2
+lxml==3.6.0
+psycopg2==2.6.1
 python-decouple==3.0
 static3==0.6.1
-psycopg2==2.6.1
 gunicorn==19.4.1

@@ -12,19 +12,22 @@
 </head>
 <body>
 
-    {% include 'partials/navbar.html' %}
+{% include 'partials/navbar.html' %}
 
-    <div class="container">
+<div class="container">
 
-        {% block content %}
+    {% block content %}
 
-        {% endblock content %}
+    {% endblock content %}
 
-    </div><!-- container -->
-
-    {% include 'partials/footer.html' %}
+</div><!-- container -->
 
 <script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+
+{% block extras_js %}
+
+{% endblock %}
+
 </body>
 </html>

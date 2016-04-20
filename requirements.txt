@@ -3,6 +3,7 @@ dj-static==0.0.6
 Django==1.9.5
 django-activeurl==0.1.9
 django-appconf==1.0.2
+django-bootstrap3==7.0.1
 django-classy-tags==0.7.2
 lxml==3.6.0
 psycopg2==2.6.1

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>Deletar Bacia Hidrográfica</h1>
+            <hr>
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                Cuidado! Esta ação eliminará este registro do sistema.
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <p>Tem certeza que você quer deletar a bacia hidrográfica <strong>{{ basin.name }}</strong> ?</p>
+                {% buttons %}
+                    <button type="submit" class="btn btn-warning">Deletar</button>
+                {% endbuttons %}
+            </form>
+
+            <hr>
+
+            <a href="{% url 'basins:list' %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
+            </a>
+            <a href="{% url 'basins:edit' basin.id %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
+            </a>
+
+        </div><!-- col-md-12 -->
+
+    </div><!-- row -->
+
+{% endblock content %}

@@ -1,0 +1,110 @@
+[
+    {
+        "pk": 1,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "585.5255",
+            "perimeter_km": "117.8367",
+            "name": "Abia\u00ed"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "637.1693",
+            "perimeter_km": "146.9504",
+            "name": "Camaratuba"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "3313.6245",
+            "perimeter_km": "338.7018",
+            "name": "Curimata\u00fa"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "589.3858",
+            "perimeter_km": "122.7797",
+            "name": "Gramame"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "152.6279",
+            "perimeter_km": "65.9573",
+            "name": "Guaju"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "977.3322",
+            "perimeter_km": "182.2779",
+            "name": "Jacu"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "3522.7257",
+            "perimeter_km": "342.7077",
+            "name": "Mamanguape"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "436.1968",
+            "perimeter_km": "130.6849",
+            "name": "Miriri"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "20072.0781",
+            "perimeter_km": "1060.9157",
+            "name": "Para\u00edba"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "1977.9907",
+            "perimeter_km": "267.0075",
+            "name": "Piranhas"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "24088.3911",
+            "perimeter_km": "1069.9996",
+            "name": "Piranhas"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "basins.Basin",
+        "fields": {
+            "area_km2": "106.0806",
+            "perimeter_km": "57.2847",
+            "name": "Trairi"
+        }
+    }
+]

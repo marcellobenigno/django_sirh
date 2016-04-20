@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'django_activeurl',
+    'bootstrap3',
+
     'sirh.core',
     'sirh.basins',
     'sirh.rivers',
@@ -106,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
+
+USE_THOUSAND_SEPARATOR = True
 
 TIME_ZONE = 'UTC'
 

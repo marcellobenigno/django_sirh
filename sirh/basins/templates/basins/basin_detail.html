@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>Bacia Hidrográfica - {{ basin.name }}</h1>
+            <hr>
+
+            <div class="desc">
+                <dl>
+                    <dt>NOME:</dt>
+                    <dd>{{ basin.name }}</dd>
+                    <dt>ÁREA:</dt>
+                    <dd>{{ basin.area_km2|floatformat:2 }} km<sup>2</sup></dd>
+                    <dt>PERÍMETRO:</dt>
+                    <dd>{{ basin.perimeter_km|floatformat:2 }} km</dd>
+                </dl>
+
+                <strong>FONTE: </strong><a href="#">Agência de Gestão das Águas</a>
+
+            </div>
+
+            <hr>
+
+            <a href="{% url 'basins:list' %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
+            </a>
+            <a href="{% url 'basins:edit' basin.id %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
+            </a>
+            <a href="#" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Deletar"></span>
+            </a>
+
+        </div><!-- col-md-12 -->
+    </div><!-- row -->
+
+{% endblock content %}

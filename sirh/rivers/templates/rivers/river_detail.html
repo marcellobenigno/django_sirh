@@ -31,7 +31,7 @@
             <a href="{% url 'rivers:edit' river.id %}" class="btn btn-primary btn-sm" role="button">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
             </a>
-            <a href="#" class="btn btn-primary btn-sm" role="button">
+            <a href="{% url 'rivers:delete' river.id %}" class="btn btn-primary btn-sm" role="button">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Deletar"></span>
             </a>
 

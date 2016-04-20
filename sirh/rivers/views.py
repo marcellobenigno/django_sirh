@@ -56,10 +56,10 @@ def edit(request, pk):
 
 
 def delete(request, pk):
-    basin = get_object_or_404(River, pk=pk)
+    river = get_object_or_404(River, pk=pk)
     if request.method == 'POST':
-        basin.delete()
+        river.delete()
         messages.success(request, 'Rio deletado com sucesso!')
         return redirect('rivers:list')
 
-    return render(request, 'basins/basin_delete.html', {'basin': basin})
+    return render(request, 'rivers/river_delete.html', {'river': river})

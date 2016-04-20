@@ -20,5 +20,6 @@ from .core.views import home
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^bacias-hidrograficas/', include('sirh.basins.urls', namespace='basins')),
+    url(r'^rios/', include('sirh.rivers.urls', namespace='rivers')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>Rio - {{ river.name }}</h1>
+            <hr>
+
+            <div class="desc">
+                <dl>
+                    <dt>NOME:</dt>
+                    <dd>{{ river.name }}</dd>
+                    <dt>ORDEM:</dt>
+                    <dd>{{ river.order}}</dd>
+                    <dt>COMPRIMENTO:</dt>
+                    <dd>{{ river.length_km }} km</dd>
+                </dl>
+
+                <strong>FONTE: </strong><a href="#">Agência de Gestão das Águas</a>
+
+            </div>
+
+            <hr>
+
+            <a href="{% url 'rivers:list' %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
+            </a>
+            <a href="{% url 'rivers:edit' river.id %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
+            </a>
+            <a href="#" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Deletar"></span>
+            </a>
+
+        </div><!-- col-md-12 -->
+    </div><!-- row -->
+
+{% endblock content %}

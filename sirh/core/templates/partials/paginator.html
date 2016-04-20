@@ -1,0 +1,15 @@
+<div class="row text-center">
+    <ul class="pagination">
+        {% if page_objects.has_previous %}
+            <li>
+                <a href="?page={{ page_objects.previous_page_number }}{% if request.GET.search_box %}&search_box={{ request.GET.search_box }}{% endif %}">&laquo; anterior</a>
+            </li>
+        {% endif %}
+
+        {% if page_objects.has_next %}
+            <li>
+                <a href="?page={{ page_objects.next_page_number }}{% if request.GET.search_box %}&search_box={{ request.GET.search_box }}{% endif %}">&raquo; seguinte</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

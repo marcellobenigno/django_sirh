@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>Deletar Rio</h1>
+            <hr>
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                Cuidado! Esta ação eliminará este registro do sistema.
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <p>Tem certeza que você quer deletar o rio <strong>{{ river.name }}</strong> ?</p>
+                {% buttons %}
+                    <button type="submit" class="btn btn-warning">Deletar</button>
+                {% endbuttons %}
+            </form>
+
+            <hr>
+
+            <a href="{% url 'rivers:list' %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
+            </a>
+            <a href="{% url 'rivers:edit' basin.id %}" class="btn btn-primary btn-sm" role="button">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
+            </a>
+
+        </div><!-- col-md-12 -->
+
+    </div><!-- row -->
+
+{% endblock content %}

@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h1>Bacias Hidrográficas</h1>
+            <h1>Rios</h1>
             <hr>
 
-            <a class="btn btn-primary TbtnMargin" href="{% url 'basins:add' %}" role="button">
+            <a class="btn btn-primary TbtnMargin" href="{% url 'rivers:add' %}" role="button">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Adicionar"></span> Adicionar
             </a>
 
@@ -34,32 +34,34 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nome da Bacia</th>
-                        <th>Área (km<sup>2</sup>)</th>
-                        <th>Perímetro (km)</th>
+                        <th>Nome do Rio</th>
+                        <th>Ordem do Rio</th>
+                        <th>Comprimento (km)</th>
+                        <th>Bacia Hidrográfica</th>
                         <th>Ações</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    {% for basin in page_objects %}
+                    {% for river in page_objects %}
 
                         <tr>
-                            <th>{{ basin.pk }}</th>
-                            <td>{{ basin.name }}</td>
-                            <td>{{ basin.area_km2|floatformat:2 }}</td>
-                            <td>{{ basin.perimeter_km|floatformat:2 }}</td>
+                            <th>{{ river.pk }}</th>
+                            <td>{{ river.name }}</td>
+                            <td>{{ river.order }}</td>
+                            <td>{{ river.length_km }}</td>
+                            <td>{{ river.basin.name }}</td>
                             <td>
-                                <a href="{% url 'basins:detail' basin.id %}" class="btn btn-primary btn-sm"
+                                <a href="{% url 'rivers:detail' river.id %}" class="btn btn-primary btn-sm"
                                    role="button">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"
                                               title="Ver"></span>
                                 </a>
-                                <a href="{% url 'basins:edit' basin.id %}" class="btn btn-primary btn-sm"
+                                <a href="{% url 'rivers:edit' river.id %}" class="btn btn-primary btn-sm"
                                    role="button">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
                                 </a>
-                                <a href="{% url 'basins:delete' basin.id %}" class="btn btn-primary btn-sm"
+                                <a href="{% url 'rivers:delete' river.id %}" class="btn btn-primary btn-sm"
                                    role="button">
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"
                                               title="Deletar"></span>
@@ -72,7 +74,6 @@
 
                     </tbody>
                 </table>
-
 
             {% else %}
 

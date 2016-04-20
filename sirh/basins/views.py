@@ -1,16 +1,31 @@
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from sirh.basins.forms import BasinForm
 from sirh.basins.models import Basin
 
 
 def list(request):
-    basins = Basin.objects.all().order_by('name')
-    var_get_search = request.GET.get('search_box')
-    if var_get_search is not None:
-        basins = Basin.objects.filter(name__icontains=var_get_search)
+    basin_list = Basin.objects.all().order_by('name')
+    selection = request.GET.get('search_box')
 
-    return render(request, 'basins/basin_listing.html', {'basins': basins})
+    page = request.GET.get('page')
+
+    if selection is not None:
+        basin_list = Basin.objects.filter(name__icontains=selection)
+
+    paginator = Paginator(basin_list, 10)
+
+    try:
+        page_objects = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        page_objects = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        page_objects = paginator.page(paginator.num_pages)
+
+    return render(request, 'basins/basin_listing.html', {'page_objects': page_objects})
 
 
 def detail(request, pk):

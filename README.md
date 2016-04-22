@@ -2,6 +2,8 @@
 
 Exemplo de CRUD com o Django e Bootstrap
 
+link da aplicação: https://sirh-marcellobenigno.herokuapp.com
+
 ## Como desenvolver?
 
 1. Clone o repositório.

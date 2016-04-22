@@ -1,6 +1,6 @@
 from django.contrib import messages
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
+from sirh.core.util.pag_helper import my_pagination, my_range
 from sirh.rivers.forms import RiverForm
 from sirh.rivers.models import River
 
@@ -14,18 +14,13 @@ def list(request):
     if selection is not None:
         rivers_list = River.objects.filter(name__icontains=selection)
 
-    paginator = Paginator(rivers_list, 10)
+    page_objects = my_pagination(rivers_list, page)
 
-    try:
-        page_objects = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        page_objects = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        page_objects = paginator.page(paginator.num_pages)
+    page_range = my_range(page_objects)
 
-    return render(request, 'rivers/river_listing.html', {'page_objects': page_objects})
+    context = {'page_objects': page_objects, 'page_range': page_range}
+
+    return render(request, 'rivers/river_listing.html', context)
 
 
 def detail(request, pk):
@@ -42,6 +37,7 @@ def create(request):
         return redirect('rivers:list')
 
     return render(request, 'rivers/river_form.html', {'title': title, 'form': form})
+
 
 def edit(request, pk):
     title = "Editar Rio"

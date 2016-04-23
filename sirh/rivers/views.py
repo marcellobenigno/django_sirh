@@ -8,16 +8,13 @@ from sirh.rivers.models import River
 def list(request):
     rivers_list = River.objects.all().order_by('name')
     selection = request.GET.get('search_box')
-
     page = request.GET.get('page')
 
     if selection is not None:
         rivers_list = River.objects.filter(name__icontains=selection)
 
     page_objects = my_pagination(rivers_list, page)
-
     page_range = my_range(page_objects)
-
     context = {'page_objects': page_objects, 'page_range': page_range}
 
     return render(request, 'rivers/river_listing.html', context)

@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from sirh.core.util.pag_helper import my_pagination, my_range
 from django.shortcuts import render, redirect, get_object_or_404
 from sirh.basins.forms import BasinForm
 from sirh.basins.models import Basin
@@ -7,25 +7,21 @@ from sirh.basins.models import Basin
 
 def list(request):
     basin_list = Basin.objects.all().order_by('name')
-    selection = request.GET.get('search_box')
+    selection = request.GET.get('search_box') or None
+    result = None
 
     page = request.GET.get('page')
 
     if selection is not None:
         basin_list = Basin.objects.filter(name__icontains=selection)
+        result = basin_list.count()
 
-    paginator = Paginator(basin_list, 10)
+    page_objects = my_pagination(basin_list, page)
+    page_range = my_range(page_objects)
 
-    try:
-        page_objects = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        page_objects = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        page_objects = paginator.page(paginator.num_pages)
+    context = {'page_objects': page_objects, 'page_range': page_range, 'result': result, 'selection': selection}
 
-    return render(request, 'basins/basin_listing.html', {'page_objects': page_objects})
+    return render(request, 'basins/basin_listing.html', context)
 
 
 def detail(request, pk):

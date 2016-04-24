@@ -9,7 +9,6 @@ def list(request):
     basin_list = Basin.objects.all().order_by('name')
     selection = request.GET.get('search_box') or None
     result = None
-
     page = request.GET.get('page')
 
     if selection is not None:
@@ -18,8 +17,12 @@ def list(request):
 
     page_objects = my_pagination(basin_list, page)
     page_range = my_range(page_objects)
-
-    context = {'page_objects': page_objects, 'page_range': page_range, 'result': result, 'selection': selection}
+    context = {
+        'page_objects': page_objects,
+        'page_range': page_range,
+        'result': result,
+        'selection': selection
+    }
 
     return render(request, 'basins/basin_listing.html', context)
 

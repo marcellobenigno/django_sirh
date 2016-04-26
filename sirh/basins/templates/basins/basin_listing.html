@@ -63,7 +63,7 @@
                             <td>{{ basin.area_km2|floatformat:2 }}</td>
                             <td>{{ basin.perimeter_km|floatformat:2 }}</td>
                             <td>
-                                {% include 'partials/actions.html' with pk=basin.pk detail='basins:detail' edit='basins:edit' delete='basins:edit' %}
+                                {% include 'partials/actions.html' with pk=basin.pk detail='basins:detail' edit='basins:edit' delete='basins:delete' %}
                             </td>
 
                         </tr>

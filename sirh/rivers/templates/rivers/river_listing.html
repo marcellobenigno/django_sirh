@@ -64,7 +64,7 @@
                             <td>{{ river.length_km }}</td>
                             <td>{{ river.basin.name }}</td>
                             <td>
-                                {% include 'partials/actions.html' with pk=river.pk detail='rivers:detail' edit='rivers:edit' delete='rivers:edit' %}
+                                {% include 'partials/actions.html' with pk=river.pk detail='rivers:detail' edit='rivers:edit' delete='rivers:delete' %}
                             </td>
 
                         </tr>

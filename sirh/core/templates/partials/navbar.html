@@ -20,6 +20,30 @@
                     <li><a href="{% url 'rivers:list' %}">Rios</a></li>
                 </ul>
             {% endactiveurl %}
+
+            {% activeurl %}
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if request.user.is_authenticated %}
+
+                        <li><a href="#">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ request.user }}</a>
+                        </li>
+
+                    {% else %}
+
+                        <li><a href="{% url 'contas:login' %}">
+                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
+
+                    {% endif %}
+
+                    <li><a href="{% url 'contas:logout' %}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
+                </ul>
+
+            {% endactiveurl %}
+
         </div><!--/.nav-collapse -->
     </div>
 </nav>

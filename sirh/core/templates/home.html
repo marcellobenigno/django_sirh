@@ -13,6 +13,21 @@
                     e <a href="http://getbootstrap.com/">Boostrap</a></p>
             </div>
 
+            {% if request.user.is_authenticated %}
+
+                <h3>Olá {{ request.user }}, seja bem vindo!</h3>
+
+                <hr>
+
+                <h4>Você está habilitado a:</h4>
+
+                <ul>
+                    <li><a href="{% url 'basins:list' %}">Adicionar/Editar/Deletar - Bacias Hidrográficas</a></li>
+                    <li><a href="{% url 'rivers:list' %}">Adicionar/Editar/Deletar - Rios</a></li>
+                </ul>
+
+            {% endif %}
+
         </div><!-- col-md-12 -->
     </div><!-- row -->
 

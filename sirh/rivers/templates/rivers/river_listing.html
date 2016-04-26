@@ -9,9 +9,7 @@
             <h1>Rios</h1>
             <hr>
 
-            <a class="btn btn-primary TbtnMargin" href="{% url 'rivers:add' %}" role="button">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Adicionar"></span> Adicionar
-            </a>
+            {% include 'partials/add_button.html' with link='rivers:add' %}
 
             {% if page_objects %}
 
@@ -20,8 +18,10 @@
 
                     <input id="search_box" name="search_box" type="text" placeholder="Pesquisar pelo nome"
                            class="form-control">
-                    <button type="submit" class="btn btn-primary form-control"><span
-                            class="glyphicon glyphicon-search"></span></button>
+
+                    <button type="submit" class="btn btn-primary form-control">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
 
                     {% if result %}
                         <a class="btn btn-primary btn-success" href="{% url 'rivers:list' %}" role="button">
@@ -64,20 +64,7 @@
                             <td>{{ river.length_km }}</td>
                             <td>{{ river.basin.name }}</td>
                             <td>
-                                <a href="{% url 'rivers:detail' river.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"
-                                              title="Ver"></span>
-                                </a>
-                                <a href="{% url 'rivers:edit' river.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-                                </a>
-                                <a href="{% url 'rivers:delete' river.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"
-                                              title="Deletar"></span>
-                                </a>
+                                {% include 'partials/actions.html' with pk=river.pk detail='rivers:detail' edit='rivers:edit' delete='rivers:edit' %}
                             </td>
 
                         </tr>
@@ -95,7 +82,6 @@
 
             <!-- pagination -->
             {% include 'partials/paginator.html' %}
-
 
             </div><!-- col-md-12 -->
     </div><!-- row -->

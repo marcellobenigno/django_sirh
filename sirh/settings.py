@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap3',
 
     'sirh.core',
+    'sirh.accounts',
     'sirh.basins',
     'sirh.rivers',
 
@@ -125,3 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Auth
+LOGIN_URL = 'contas:login'
+
+LOGIN_REDIRECT_URL = 'home'

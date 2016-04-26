@@ -25,15 +25,7 @@
 
             <hr>
 
-            <a href="{% url 'basins:list' %}" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
-            </a>
-            <a href="{% url 'basins:edit' basin.id %}" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-            </a>
-            <a href="#" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Deletar"></span>
-            </a>
+            {% include 'partials/links_details.html' with pk=basin.pk list='basins:list' edit='basins:edit' delete='basins:edit' %}
 
         </div><!-- col-md-12 -->
     </div><!-- row -->

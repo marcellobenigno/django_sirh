@@ -9,9 +9,8 @@
             <h1>Bacias Hidrográficas</h1>
             <hr>
 
-            <a class="btn btn-primary TbtnMargin" href="{% url 'basins:add' %}" role="button">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Adicionar"></span> Adicionar
-            </a>
+            {% include 'partials/add_button.html' with link='basins:add' %}
+
 
             {% if page_objects %}
 
@@ -20,8 +19,10 @@
 
                     <input id="search_box" name="search_box" type="text" placeholder="Pesquisar pelo nome"
                            class="form-control">
-                    <button type="submit" class="btn btn-primary form-control"><span
-                            class="glyphicon glyphicon-search"></span></button>
+
+                    <button type="submit" class="btn btn-primary form-control">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
 
                     {% if result %}
                         <a class="btn btn-primary btn-success" href="{% url 'basins:list' %}" role="button">
@@ -62,20 +63,7 @@
                             <td>{{ basin.area_km2|floatformat:2 }}</td>
                             <td>{{ basin.perimeter_km|floatformat:2 }}</td>
                             <td>
-                                <a href="{% url 'basins:detail' basin.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"
-                                              title="Ver"></span>
-                                </a>
-                                <a href="{% url 'basins:edit' basin.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-                                </a>
-                                <a href="{% url 'basins:delete' basin.id %}" class="btn btn-primary btn-sm"
-                                   role="button">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"
-                                              title="Deletar"></span>
-                                </a>
+                                {% include 'partials/actions.html' with pk=basin.pk detail='basins:detail' edit='basins:edit' delete='basins:edit' %}
                             </td>
 
                         </tr>
@@ -94,7 +82,6 @@
 
             <!-- pagination -->
             {% include 'partials/paginator.html' %}
-
 
             </div><!-- col-md-12 -->
     </div><!-- row -->

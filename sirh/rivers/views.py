@@ -37,7 +37,7 @@ def create(request):
     form = RiverForm(request.POST or None)
     if form.is_valid():
         form.save()
-        messages.success(request, 'Rio cadastrada com sucesso!')
+        messages.success(request, 'Rio cadastrado com sucesso!')
         return redirect('rivers:list')
 
     return render(request, 'rivers/river_form.html', {'title': title, 'form': form})

@@ -14,7 +14,7 @@
                     <dt>NOME:</dt>
                     <dd>{{ river.name }}</dd>
                     <dt>ORDEM:</dt>
-                    <dd>{{ river.order}}</dd>
+                    <dd>{{ river.order }}</dd>
                     <dt>COMPRIMENTO:</dt>
                     <dd>{{ river.length_km }} km</dd>
                 </dl>
@@ -25,15 +25,7 @@
 
             <hr>
 
-            <a href="{% url 'rivers:list' %}" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" title="Voltar"></span>
-            </a>
-            <a href="{% url 'rivers:edit' river.id %}" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true" title="Editar"></span>
-            </a>
-            <a href="{% url 'rivers:delete' river.id %}" class="btn btn-primary btn-sm" role="button">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Deletar"></span>
-            </a>
+            {% include 'partials/links_details.html' with pk=river.pk list='rivers:list' edit='rivers:edit' delete='rivers:edit' %}
 
         </div><!-- col-md-12 -->
     </div><!-- row -->

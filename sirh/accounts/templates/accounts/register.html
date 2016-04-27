@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8 col-lg-offset-2">
+            <h2 class="text-center">Formulário de Cadastro</h2>
+            <form action="." method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

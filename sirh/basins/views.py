@@ -1,8 +1,8 @@
 from django.contrib import messages
-from sirh.core.util.pag_helper import my_pagination, my_range
 from django.shortcuts import render, redirect, get_object_or_404
 from sirh.basins.forms import BasinForm
 from sirh.basins.models import Basin
+from sirh.core.util.pag_helper import my_pagination, my_range
 
 
 def list(request):

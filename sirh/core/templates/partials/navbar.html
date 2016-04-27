@@ -30,13 +30,12 @@
                         <li><a href="#">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ request.user }}</a>
                         </li>
-
-                        <li><a href="{% url 'contas:logout' %}">
+                        <li><a href="{% url 'accounts:logout' %}">
                             <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
 
                     {% else %}
 
-                        <li><a href="{% url 'contas:login' %}">
+                        <li><a href="{% url 'accounts:login' %}">
                             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
 
                     {% endif %}

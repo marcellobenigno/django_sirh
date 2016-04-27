@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from sirh.basins.forms import BasinForm
 from sirh.basins.models import Basin
@@ -32,6 +33,7 @@ def detail(request, pk):
     return render(request, 'basins/basin_detail.html', {'basin': basin})
 
 
+@login_required
 def create(request):
     title = "Cadastrar Bacia Hidrográfica"
     form = BasinForm(request.POST or None)
@@ -43,6 +45,7 @@ def create(request):
     return render(request, 'basins/basin_form.html', {'title': title, 'form': form})
 
 
+@login_required
 def edit(request, pk):
     title = "Editar Bacia Hidrográfica"
     basin = get_object_or_404(Basin, pk=pk)
@@ -55,6 +58,7 @@ def edit(request, pk):
     return render(request, 'basins/basin_form.html', {'title': title, 'form': form})
 
 
+@login_required
 def delete(request, pk):
     basin = get_object_or_404(Basin, pk=pk)
     if request.method == 'POST':

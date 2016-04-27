@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from sirh.core.util.pag_helper import my_pagination, my_range
 from sirh.rivers.forms import RiverForm
@@ -32,6 +33,7 @@ def detail(request, pk):
     return render(request, 'rivers/river_detail.html', {'river': river})
 
 
+@login_required
 def create(request):
     title = "Cadastrar Rio"
     form = RiverForm(request.POST or None)
@@ -43,6 +45,7 @@ def create(request):
     return render(request, 'rivers/river_form.html', {'title': title, 'form': form})
 
 
+@login_required
 def edit(request, pk):
     title = "Editar Rio"
     river = get_object_or_404(River, pk=pk)
@@ -55,6 +58,7 @@ def edit(request, pk):
     return render(request, 'rivers/river_form.html', {'title': title, 'form': form})
 
 
+@login_required
 def delete(request, pk):
     river = get_object_or_404(River, pk=pk)
     if request.method == 'POST':

@@ -4,10 +4,14 @@ from sirh.accounts.views import register
 
 urlpatterns = [
     url(r'^login/$', login,
-        {'template_name': 'accounts/login_form.html'}, name='login'),
+        {'template_name': 'accounts/login_form.html'},
+        name='login'),
 
     url(r'^logout/$', logout,
-        {'next_page': 'home'}, name='logout'),
+        {'next_page': 'home'},
+        name='logout'),
 
-    url(r'^cadastre-se/$', register, name='register'),
+    url(r'^cadastre-se/$', register,
+        name='register'),
+
 ]

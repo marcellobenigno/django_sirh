@@ -17,7 +17,9 @@ def list(request):
         result = rivers_list.count()
 
     page_objects = my_pagination(rivers_list, page)
+
     page_range = my_range(page_objects)
+
     context = {
         'page_objects': page_objects,
         'page_range': page_range,
@@ -37,12 +39,19 @@ def detail(request, pk):
 def create(request):
     title = "Cadastrar Rio"
     form = RiverForm(request.POST or None)
+
     if form.is_valid():
         form.save()
-        messages.success(request, 'Rio cadastrado com sucesso!')
+        messages.success(request,
+                         'Rio cadastrado com sucesso!')
         return redirect('rivers:list')
 
-    return render(request, 'rivers/river_form.html', {'title': title, 'form': form})
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'rivers/river_form.html', context)
 
 
 @login_required
@@ -50,20 +59,29 @@ def edit(request, pk):
     title = "Editar Rio"
     river = get_object_or_404(River, pk=pk)
     form = RiverForm(request.POST or None, instance=river)
+
     if form.is_valid():
         form.save()
-        messages.success(request, 'Rio editado com sucesso!')
+        messages.success(request,
+                         'Rio editado com sucesso!')
         return redirect('rivers:list')
 
-    return render(request, 'rivers/river_form.html', {'title': title, 'form': form})
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'rivers/river_form.html', context)
 
 
 @login_required
 def delete(request, pk):
     river = get_object_or_404(River, pk=pk)
+
     if request.method == 'POST':
         river.delete()
-        messages.success(request, 'Rio deletado com sucesso!')
+        messages.success(request,
+                         'Rio deletado com sucesso!')
         return redirect('rivers:list')
 
     return render(request, 'rivers/river_delete.html', {'river': river})

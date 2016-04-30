@@ -5,6 +5,7 @@ django-activeurl==0.1.9
 django-appconf==1.0.2
 django-bootstrap3==7.0.1
 django-classy-tags==0.7.2
+django-password-reset==0.8.2
 lxml==3.6.0
 psycopg2==2.6.1
 python-decouple==3.0

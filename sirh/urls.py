@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^conta/', include('sirh.accounts.urls', namespace='accounts')),
     url(r'^bacias-hidrograficas/', include('sirh.basins.urls', namespace='basins')),
     url(r'^rios/', include('sirh.rivers.urls', namespace='rivers')),
+    url(r'^reset/', include('password_reset.urls')),
     url(r'^admin/', admin.site.urls),
+
 ]

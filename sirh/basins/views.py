@@ -17,7 +17,9 @@ def list(request):
         result = basin_list.count()
 
     page_objects = my_pagination(basin_list, page)
+
     page_range = my_range(page_objects)
+
     context = {
         'page_objects': page_objects,
         'page_range': page_range,
@@ -37,12 +39,19 @@ def detail(request, pk):
 def create(request):
     title = "Cadastrar Bacia Hidrográfica"
     form = BasinForm(request.POST or None)
+
     if form.is_valid():
         form.save()
-        messages.success(request, 'Bacia higrográfica cadastrada com sucesso!')
+        messages.success(request,
+                         'Bacia higrográfica cadastrada com sucesso!')
         return redirect('basins:list')
 
-    return render(request, 'basins/basin_form.html', {'title': title, 'form': form})
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'basins/basin_form.html', context)
 
 
 @login_required
@@ -50,20 +59,29 @@ def edit(request, pk):
     title = "Editar Bacia Hidrográfica"
     basin = get_object_or_404(Basin, pk=pk)
     form = BasinForm(request.POST or None, instance=basin)
+
     if form.is_valid():
         form.save()
-        messages.success(request, 'Bacia higrográfica editada com sucesso!')
+        messages.success(request,
+                         'Bacia higrográfica editada com sucesso!')
         return redirect('basins:list')
 
-    return render(request, 'basins/basin_form.html', {'title': title, 'form': form})
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'basins/basin_form.html', context)
 
 
 @login_required
 def delete(request, pk):
     basin = get_object_or_404(Basin, pk=pk)
+
     if request.method == 'POST':
         basin.delete()
-        messages.success(request, 'Bacia higrográfica deletada com sucesso!')
+        messages.success(request,
+                         'Bacia higrográfica deletada com sucesso!')
         return redirect('basins:list')
 
     return render(request, 'basins/basin_delete.html', {'basin': basin})

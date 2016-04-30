@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block title %}{% trans "Password recovery" %}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Recuperar Senha</h2>
+            <hr>
+            <form method="post" action="{{ url }}">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Recuperar senha</button>
+                {% endbuttons %}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Password recovery sent" %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Senha resetada com Sucesso</h2>
+            <hr>
+            <p>{% blocktrans with ago=timestamp|timesince %}Um e-mail foi enviado para <strong>{{ email }} </strong>a {{ ago }}.</p>
+            <p>Use o link enviado para gerar uma nova senha.{% endblocktrans %}</p>
+        </div>
+    </div>
+
+{% endblock %}

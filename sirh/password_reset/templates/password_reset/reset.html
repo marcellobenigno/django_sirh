@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% load i18n %}
+{% load bootstrap3 %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Definição de nova senha</h2>
+            <hr>
+            {% if invalid %}{% url "password_reset_recover" as recovery_url %}
+                <p>{% blocktrans %}Desculpe, o link é inválido. Você pode
+                    <a href="{{ recovery_url }}">requisitar uma nova</a>.{% endblocktrans %}</p>
+            {% else %}
+                <h4>{% blocktrans %}Olá, <strong>{{ username }}</strong>. Por favor escolha a sua nova
+                    senha:{% endblocktrans %}</h4>
+                <form method="post" action="{% url "password_reset_reset" token %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Escolher nova senha</button>
+                    {% endbuttons %}
+                </form>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

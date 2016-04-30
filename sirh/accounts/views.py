@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from sirh.accounts.forms import RegisterForm
 
 
 def register(request):
     template_name = 'accounts/register.html'
-    form = UserCreationForm(request.POST or None)
+    form = RegisterForm(request.POST or None)
 
     if form.is_valid():
         form.save()

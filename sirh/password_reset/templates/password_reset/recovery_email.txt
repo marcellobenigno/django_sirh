@@ -1,12 +1,12 @@
-{% load i18n %}{% blocktrans %}Caro {{ username }},{% endblocktrans %}
+{% load i18n %}{% blocktrans %}Caro(a) {{ username }},{% endblocktrans %}
 
-{% blocktrans with domain=site.domain %}You -- or someone pretending to be you -- has requested a password reset on {{ domain }}.{% endblocktrans %}
+{% blocktrans with domain=site.domain %}Você requisitou a mudança de senha do site {{ domain }}.{% endblocktrans %}
 
-{% trans "You can set your new password by following this link:" %}
+{% trans "Você pode realizar a operação no link abaixo:" %}
 
 http{% if secure %}s{% endif %}://{{ site.domain }}{% url "password_reset_reset" token %}
 
-{% trans "If you don't want to reset your password, simply ignore this email and it will stay unchanged." %}
+{% trans "Se você não quiser alterar a senha, ignore este e-mail." %}
 
 --
 SISTEMA DE INFORMAÇÕES SOBRE RECURSOS HÍDRICOS - SIRH

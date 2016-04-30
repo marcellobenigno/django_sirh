@@ -1,8 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
-
-{% block title %}{% trans "New password set" %}{% endblock %}
-
 
 {% block content %}
 
@@ -10,7 +6,8 @@
         <div class="col-md-12">
             <h2>Senha resetada com Sucesso</h2>
             <hr>
-            <p>{% trans "Your password has successfully been reset. You can use it right now on the login page." %}</p>
+            <p>Sua senha foi resetada com sucesso.</p>
+            <p>Acesse a área de login{% url 'accounts:login' %}</p>
         </div>
     </div>
 
